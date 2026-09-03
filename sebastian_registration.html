@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Son Solar - Registration</title>
+  <link rel="stylesheet" href="styles/sebastian_registration.css">
+</head>
+<body>
+
+  <div class="card">
+    <!-- Pure CSS Sun with Rays -->
+    <div class="sun-container">
+      <div class="sun-body"></div>
+      <div class="ray ray-1"></div>
+      <div class="ray ray-2"></div>
+      <div class="ray ray-3"></div>
+      <div class="ray ray-4"></div>
+      <div class="ray ray-5"></div>
+      <div class="ray ray-6"></div>
+      <div class="ray ray-7"></div>
+      <div class="ray ray-8"></div>
+      <div class="ray ray-9"></div>
+
+    </div>
+    
+    <h2>Register</h2>
+    <p class="sub-text">Already have an Account? <a href="#">Login</a></p>
+    
+    <form id="registration-form">
+      <div class="input-group">
+        <img class="input-icon" src="assets/mail.png" alt="">
+        <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+      </div>
+
+      <div class="input-group">
+        <img class="input-icon" src="assets/user.png" alt="">
+        <input id="username" name="username" type="text" placeholder="Username" autocomplete="username" required>
+      </div>
+
+      <div class="input-group">
+        <img class="input-icon" src="assets/padlock.png" alt="">
+        <input id="password" name="password" type="password" placeholder="Password" autocomplete="new-password" required>
+        <img class="input-icon toggle-eye" src="assets/hide.png" alt="Show or hide password">
+      </div>
+
+      <div class="input-group">
+        <img class="input-icon" src="assets/padlock.png" alt="">
+        <input id="confirm-password" name="confirm-password" type="password" placeholder="Confirm Password" autocomplete="new-password" required>
+        <img class="input-icon toggle-eye" src="assets/hide.png" alt="Show or hide password">
+      </div>
+
+      <div class="form-options">
+        <label>
+          <input type="checkbox" required>
+          <span><a href="#terms-modal" id="terms-link">Terms and Agreements</a></span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+
+      <div class="divider">Or Continue with</div>
+
+      <button type="button" class="btn btn-social">
+        <img class="social-icon" src="assets/google.png" alt=""> Google
+      </button>
+    </form>
+  </div>
+
+  <div class="terms-modal" id="terms-modal" role="dialog" aria-modal="true" aria-labelledby="terms-title" hidden>
+    <div class="terms-content">
+      <button class="terms-close" id="terms-close" type="button" aria-label="Close terms">&times;</button>
+      <h2 id="terms-title">Terms and Agreements</h2>
+      <img src="assets/terms.png" alt="Terms and Agreements">
+    </div>
+  </div>
+
+  <script>
+    const registrationForm = document.getElementById('registration-form');
+    const passwordFields = document.querySelectorAll('input[type="password"]');
+    const toggleEyes = document.querySelectorAll('.toggle-eye');
+    const termsModal = document.getElementById('terms-modal');
+    const termsLink = document.getElementById('terms-link');
+    const termsClose = document.getElementById('terms-close');
+
+    toggleEyes.forEach((toggleEye, index) => {
+      toggleEye.addEventListener('click', () => {
+        const passwordField = passwordFields[index];
+        const isHidden = passwordField.type === 'password';
+
+        passwordField.type = isHidden ? 'text' : 'password';
+        toggleEye.src = isHidden ? 'assets/visible.png' : 'assets/hide.png';
+        toggleEye.alt = isHidden ? 'Hide password' : 'Show password';
+      });
+    });
+
+    const closeTerms = () => {
+      termsModal.hidden = true;
+    };
+
+    termsLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      termsModal.hidden = false;
+      termsClose.focus();
+    });
+
+    termsClose.addEventListener('click', closeTerms);
+    termsModal.addEventListener('click', (event) => {
+      if (event.target === termsModal) {
+        closeTerms();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !termsModal.hidden) {
+        closeTerms();
+      }
+    });
+
+    registrationForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const username = document.getElementById('username');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirm-password');
+
+      username.value = username.value.trim();
+
+      if (!registrationForm.checkValidity()) {
+        registrationForm.reportValidity();
+        return;
+      }
+
+      if (password.value !== confirmPassword.value) {
+        alert('Passwords do not match.');
+        confirmPassword.focus();
+        return;
+      }
+
+      alert('Registration successful!');
+      registrationForm.reset();
+      toggleEyes.forEach((toggleEye) => {
+        toggleEye.src = 'assets/hide.png';
+        toggleEye.alt = 'Show or hide password';
+      });
+    });
+  </script>
+</body>
+</html>
