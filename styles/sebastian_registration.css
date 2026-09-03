@@ -1,0 +1,284 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #b5b5b5;
+  border-radius: 16px;
+  padding: 24px 20px;
+  width: 320px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sun-container {
+  position: relative;
+  width: 120px;
+  height: 50px;
+  margin: 0 auto 12px auto;
+  transform: rotate(180deg);
+}
+
+.sun-body {
+  width: 100px;
+  height: 50px;
+  background-color: #fffb0a;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+.ray {
+  position: absolute;
+  background-color: #fffb0a;
+  width: 2px;
+  height: 8px;
+  border-radius: 1px;
+}
+
+.ray-1 {
+  bottom: 2px;
+  left: 3px;
+  transform: rotate(-80deg);
+}
+
+.ray-2 {
+  bottom: 11px;
+  left: 6px;
+  transform: rotate(-60deg);
+}
+
+.ray-3 {
+  top: 6px;
+  left: 14px;
+  transform: rotate(-40deg);
+}
+
+.ray-4 {
+  top: -2px;
+  left: 26px;
+  transform: rotate(-20deg);
+}
+
+.ray-5 {
+  top: -6px;
+  left: 39px;
+  transform: rotate(0deg);
+}
+
+/* tinamad na sir di maayos */
+.ray-6 {
+  top: -2px;
+  right: 26px;
+  transform: rotate(20deg);
+}
+
+.ray-7 {
+  top: 6px;
+  right: 14px;
+  transform: rotate(40deg);
+}
+
+.ray-8 {
+  bottom: 11px;
+  right: 6px;
+  transform: rotate(60deg);
+}
+
+/* Horizontal Right */
+.ray-9 {
+  bottom: 2px;
+  right: 3px;
+  transform: rotate(80deg);
+}
+
+.card h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.sub-text {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.sub-text a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #777;
+  border-radius: 20px;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  background-color: #fff;
+}
+
+.input-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 0 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.input-group input::placeholder {
+  color: #888;
+}
+
+.toggle-eye {
+  cursor: pointer;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #444;
+  margin: 8px 0 16px 4px;
+}
+
+.form-options input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.form-options a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #777;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #f0f0f0;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin: 14px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #b5b5b5;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.btn-social:hover {
+  background-color: #f0f0f0;
+}
+
+.terms-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.terms-modal[hidden] {
+  display: none;
+}
+
+.terms-content {
+  position: relative;
+  max-width: min(600px, 100%);
+  max-height: 90vh;
+  padding: 32px 16px 16px;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.terms-content h2 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}
+
+.terms-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.terms-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.terms-close:hover {
+  color: #111;
+}
